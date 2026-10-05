@@ -1,16 +1,32 @@
-# React + Vite
+# VSRP Homepage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive landing page application built for VSRP using **React** and **Vite**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tech Stack & Framework
 
-## React Compiler
+* **Framework:** React 18+
+* **Build Tool:** Vite
+* **Styling:** CSS3 (Component-level styles)
+* **Icons & Assets:** Custom SVG icons & optimized image assets
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📁 Key Folder Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+machine_test/
+├── public/                 # Static assets (images, logos, SVG icons)
+├── src/
+│   ├── assets/             # Global media files and design assets
+│   ├── components/         # Modular UI components
+│   │   ├── upper/          # Top section (Navbar, Hero, Stats, BuildSection)
+│   │   ├── middle/         # Core content (Industries, Process, Projects, WhyUs)
+│   │   └── lower/          # Bottom section (About, FAQ, FloatingSupport, Footer)
+│   ├── data/               # Dynamic datasets (FAQs, industry content)
+│   ├── App.jsx             # Main layout component
+│   ├── index.css           # Global resets and typography
+│   └── main.jsx            # React app entry point
+├── package.json            # Project dependencies and scripts
+└── vite.config.js          # Vite configuration
