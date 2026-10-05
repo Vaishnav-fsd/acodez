@@ -1,0 +1,131 @@
+/* ─── Products Banner ─── */
+.products-banner {
+  position: relative;
+  width: 100%;
+  min-height: 48vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.products-banner__bg {
+  position: absolute;
+  inset: -15%;
+  background-image: url('/products_bg.png');
+  background-size: cover;
+  background-position: center 60%;
+  will-change: transform;
+}
+
+.products-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.10);
+  z-index: 1;
+}
+
+.products-banner__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 11vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.products-banner__heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2.2rem, 5.6vw, 6.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  word-spacing: -0.05em;
+  max-width: 64vw;
+  margin: 0;
+}
+
+.products-banner__accent {
+  color: #f0532d;
+}
+
+/* Button */
+.products-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.10);
+  border-radius: 50px;
+  padding: 5px 5px 5px 24px;
+  width: 333px;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin-top: 3vw;
+  transition: background 0.25s ease;
+}
+
+.products-banner__btn:hover {
+  background: rgba(255, 255, 255, 0.36);
+}
+
+.products-banner__btn-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.products-banner__btn-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f0532d;
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.products-banner__btn:hover .products-banner__btn-circle {
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .products-banner {
+    min-height: 560px;
+  }
+
+  .products-banner__overlay {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .products-banner__content {
+    padding-top: 120px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .products-banner__heading {
+    font-size: 11vw;
+    max-width: 100%;
+    line-height: 1.0;
+    word-spacing: 0;
+  }
+
+  .products-banner__btn {
+    width: 100%;
+    max-width: 340px;
+    margin-top: 40px;
+  }
+}

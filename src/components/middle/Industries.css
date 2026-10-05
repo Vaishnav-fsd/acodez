@@ -1,0 +1,342 @@
+/* ───────────────────────────────────────────────────────────
+   Industries.css — full replacement.
+   Every selector is scoped with `.industries` so it out-ranks
+   any older rules still lying around in the project.
+
+   Both cards are built from the Figma frame (630 × 626). Sizes
+   inside them use cqw (1cqw = 1% of the card width), so the
+   cards look identical to the design at any width.
+   ─────────────────────────────────────────────────────────── */
+
+.industries {
+  /* set this to the Figma font once you know it (see notes) */
+  --ind-font: inherit;
+
+  --ind-accent: #f45330;
+  --ind-dark: #17181c;
+  --ind-text: #1f1f1f;
+  --ind-muted: #4a4a4a;
+
+  width: 100%;
+  background: #fff;
+  color: var(--ind-text);
+  font-family: var(--ind-font);
+  padding: 56px 24px 72px;
+  box-sizing: border-box;
+}
+
+.industries *,
+.industries *::before,
+.industries *::after {
+  box-sizing: border-box;
+}
+
+/* 2 × 630px cards + 20px gap = the Figma size (630 × 626 each) */
+.industries .industries__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ── Heading ─────────────────────────────────────────────── */
+.industries .industries__heading {
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.industries .industries__heading-accent {
+  color: var(--ind-accent);
+}
+
+.industries .industries__subtext {
+  max-width: 560px;
+  margin: 16px auto 40px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ind-muted);
+}
+
+/* ── Two cards ───────────────────────────────────────────── */
+.industries .industries__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+}
+
+/* ── LEFT: dark card ─────────────────────────────────────── */
+.industries .industries__dark-card {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 630 / 626;
+  min-height: 0;
+  background: var(--ind-dark);
+  color: #fff;
+  overflow: hidden;
+
+  padding: 0;
+}
+
+.industries .industries__dark-label {
+  margin: 42px 0 0;
+  margin: 6.6cqw 0 0;
+  text-align: center;
+  font-size: 14px;
+  font-size: max(11px, 2.22cqw);
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* centered between the label and the tab bar */
+.industries .industries__slide-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 63px;
+  gap: 10cqw;
+  padding: 0 40px;
+  padding: 0 6.35cqw;
+}
+
+.industries .industries__slide-item {
+  max-width: 80%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  line-height: 1;
+  text-align: center;
+  white-space: normal;
+  text-wrap: wrap;
+}
+
+.industries button.industries__slide-item {
+  cursor: pointer;
+}
+
+/* previous / next: 24px, white at 20% */
+.industries .industries__slide-item--dim {
+  font-size: 24px;
+  font-size: max(15px, 3.81cqw);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.25s ease;
+}
+
+.industries button.industries__slide-item--dim:hover,
+.industries button.industries__slide-item--dim:focus-visible {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* active: 60px, line-height 1 */
+.industries .industries__slide-item--active {
+  max-width: 80%;
+  font-size: 60px;
+  font-size: max(32px, 9.52cqw);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #fff;
+  animation: ind-slide-in 0.35s ease both;
+}
+
+@keyframes ind-slide-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Tab bar ─────────────────────────────────────────────── */
+.industries .industries__tab-bar {
+  padding: 0 40px 37px;
+  padding: 0 6.35cqw 5.9cqw;
+}
+
+.industries .industries__tabs {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 32px;
+  gap: 5.08cqw;
+  width: 100%;
+  padding: 23px 0 0;
+  padding: 3.65cqw 0 0;
+  border: 0;
+}
+
+/* full-width dotted divider */
+.industries .industries__tabs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg, rgba(255, 255, 255, 0.22) 0 1.5px, transparent 1.5px 2.5px
+  );
+}
+
+.industries .industries__tab {
+  flex: none;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 16px;
+  font-size: max(11px, 2.54cqw);
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.industries .industries__tab--active {
+  color: var(--ind-accent);
+}
+
+/* orange dotted segment on the divider, slides to the active tab */
+.industries .industries__tab-indicator {
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg, var(--ind-accent) 0 1.5px, transparent 1.5px 2.5px
+  );
+  transition: left 0.35s ease, width 0.35s ease, opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.industries .industries__tab-indicator.is-hidden {
+  opacity: 0;
+}
+
+/* ── RIGHT: photo card ───────────────────────────────────── */
+.industries .industries__photo-card {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 630 / 626;
+  min-height: 0;
+  overflow: hidden;
+  background: #222;
+}
+
+.industries .industries__photo-pair {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.industries .industries__photo-pair.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.industries .industries__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.industries .industries__photo--bw {
+  opacity: 0;
+}
+
+/* Hover: photos that HAVE a b/w file swap to it (e.g. Mining) */
+@media (hover: hover) {
+  .industries .industries__photo-card:hover .has-bw .industries__photo--color { opacity: 0; }
+  .industries .industries__photo-card:hover .has-bw .industries__photo--bw    { opacity: 1; }
+
+  /* photos with NO b/w file fade to grayscale instead */
+  .industries .industries__photo-card:hover .no-bw .industries__photo--color  { filter: grayscale(1); }
+}
+
+/* ── CTA pill (40px from right/bottom, 56px tall at 630 wide) ─ */
+.industries .industries__photo-cta {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  right: 6.35cqw;
+  bottom: 6.35cqw;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  gap: 3.17cqw;
+  padding: 4px 4px 4px 20px;
+  padding: max(4px, 0.64cqw) max(4px, 0.64cqw) max(4px, 0.64cqw) max(14px, 3.17cqw);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-size: max(10px, 2.22cqw);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.industries .industries__photo-cta-circle {
+  width: 48px;
+  height: 48px;
+  width: max(32px, 7.62cqw);
+  height: max(32px, 7.62cqw);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ind-accent);
+  transition: transform 0.25s ease;
+}
+
+.industries .industries__photo-cta-circle svg {
+  width: 40%;
+  height: 40%;
+}
+
+.industries .industries__photo-cta:hover .industries__photo-cta-circle {
+  transform: translateX(3px);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 800px) {
+  .industries {
+    padding: 40px 16px 56px;
+  }
+
+  .industries .industries__cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .industries .industries__tabs {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industries .industries__slide-item--active { animation: none; }
+  .industries .industries__photo-pair,
+  .industries .industries__photo,
+  .industries .industries__tab-indicator { transition: none; }
+}

@@ -1,0 +1,245 @@
+/* ===== Footer =====
+   Measured from the Figma frame (1440 wide, 80px left edge).
+   The JSX does not need to change. */
+.footer {
+  --accent: #f45330;
+  /* 80px on a 1440 screen, centred on a 1280 column on wider ones */
+  --edge: max(80px, calc((100vw - 1280px) / 2));
+
+  position: relative;
+  background: #17181c;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Background: a big, faint "V" (the logo shape) in two strokes.
+   It replaces the old watermark SVG. To bring the old one back,
+   delete the `display: none` rule below and the ::before block. */
+.footer__watermark {
+  display: none;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1801 855' preserveAspectRatio='xMidYMid slice'%3E%3Cg fill='%23fff' fill-opacity='.035'%3E%3Cpolygon points='770,0 1190,0 697,855 277,855'/%3E%3Cpolygon points='0,0 8,0 408,628 329,764 0,250'/%3E%3C/g%3E%3C/svg%3E")
+    center / cover no-repeat;
+}
+
+/* content spans 80px -> 1340px on a 1440 screen */
+.footer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: none;
+  margin: 0;
+  padding: 90px calc(var(--edge) + 20px) 98px var(--edge);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+}
+
+/* ----- left column ----- */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+}
+.footer__logo {
+  width: 266px;
+  height: auto;
+  margin: 0 0 30px;
+  display: block;
+  /* dark logo background takes the footer colour; white and orange parts stay as they are */
+  mix-blend-mode: lighten;
+}
+/* If you keep the current logo PNG (it has empty margins around the mark),
+   use this instead of the two lines above:
+     width: 311px;
+     margin: -15px 0 8px -27px;
+*/
+.footer__about {
+  margin: 0 0 40px;
+  max-width: 310px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #a9a9ac;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  margin: 0 0 117px;
+  padding: 0;
+}
+.footer__socials a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  color: #fff;
+  transition: background 0.25s, border-color 0.25s;
+}
+.footer__socials a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.footer__socials svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ISO badge */
+.footer__iso {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 15px;
+  color: #fff;
+}
+.footer__iso img {
+  width: 26px;
+  height: auto;
+  margin-left: 2px;
+}
+
+/* ----- link grid (254 + 51 + 304 = 609 wide) ----- */
+.footer__cols {
+  display: grid;
+  grid-template-columns: 254px 304px;
+  column-gap: 51px;
+  row-gap: 48px;
+  align-content: start;
+}
+.footer__col {
+  padding-top: 28px;
+  border-top: 1px dotted rgba(255, 255, 255, 0.25);
+}
+/* the Location column's divider is shorter than the Industries one */
+.footer__col:nth-child(4) {
+  width: 255px;
+}
+.footer__col h4 {
+  margin: 0 0 27px;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--accent);
+}
+.footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7.5px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.footer__col a {
+  font-size: 16px;
+  color: #dcdcde;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer__col a:hover {
+  color: var(--accent);
+}
+
+.footer__col--bottom p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fff;
+}
+
+/* ----- bottom bar ----- */
+.footer__bar {
+  position: relative;
+  z-index: 1;
+  border-top: 1px dotted rgba(255, 255, 255, 0.25);
+}
+.footer__bar-inner {
+  max-width: none;
+  margin: 0;
+  padding: 42px calc(var(--edge) + 20px) 38px var(--edge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.footer__bar a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer__bar a:hover {
+  color: var(--accent);
+}
+.footer__legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer__legal i {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* ----- responsive ----- */
+@media (max-width: 1100px) {
+  .footer {
+    --edge: 40px;
+  }
+  .footer__inner,
+  .footer__bar-inner {
+    padding-right: var(--edge);
+  }
+  .footer__inner {
+    grid-template-columns: 1fr;
+    padding-top: 70px;
+    padding-bottom: 60px;
+    gap: 50px;
+  }
+  .footer__cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .footer__col:nth-child(4) {
+    width: auto;
+  }
+  .footer__socials {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 800px) {
+  .footer {
+    --edge: 20px;
+  }
+  .footer__inner {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+  .footer__socials {
+    margin-bottom: 40px;
+  }
+  .footer__bar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer__cols {
+    grid-template-columns: 1fr;
+    row-gap: 36px;
+  }
+}

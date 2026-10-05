@@ -1,0 +1,190 @@
+/* ─── Why Us ─── */
+.whyus {
+  background: #eef2f5;
+  padding: 7.2vw 0 5vw;
+}
+
+.whyus__container {
+  width: 89vw;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ─── Header row: 2-column grid ─── */
+.whyus__header {
+  display: grid;
+  grid-template-columns: 57.7% 1fr;
+  align-items: center;
+  margin-bottom: 2.8vw;
+}
+
+.whyus__heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: 3.7vw;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.whyus__heading-line1 {
+  color: #1c1c1c;
+  display: block;
+}
+
+.whyus__heading-line2 {
+  color: #f0532d;
+  display: block;
+}
+
+.whyus__desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.06vw;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #444;
+  max-width: 33vw;
+  margin: 0;
+}
+
+/* ─── Cards grid ─── */
+.whyus__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.33vw;
+}
+
+.whyus__pillar {
+  background: #ffffff;
+  border-radius: 0;
+  padding: 2.8vw;
+  min-height: 25.8vw;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* ─── Icon circle ─── */
+.whyus__pillar-icon {
+  width: 4.9vw;
+  height: 4.9vw;
+  border-radius: 50%;
+  background: #f4512c;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* ─── Bottom block pushed to bottom ─── */
+.whyus__pillar-bottom {
+  margin-top: auto;
+}
+
+/* ─── Dotted divider ─── */
+.whyus__pillar-divider {
+  position: relative;
+  border-top: 1px dotted #cfcfcf;
+  width: 100%;
+}
+
+.whyus__pillar-divider::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 0;
+  border-top: 1px dotted #f4512c;
+  transition: width 0.4s ease;
+}
+
+.whyus__pillar--active .whyus__pillar-divider::after {
+  width: 43%;
+}
+
+/* ─── Card text ─── */
+.whyus__pillar-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.65vw;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #1c1c1c;
+  margin: 22px 0 0;
+}
+
+.whyus__pillar-body {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.06vw;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #444;
+  max-width: 22.5vw;
+  margin: 20px 0 0;
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 1100px) {
+  .whyus__heading {
+    font-size: 5vw;
+  }
+
+  .whyus__desc {
+    font-size: 17px;
+    max-width: none;
+  }
+
+  .whyus__pillar {
+    padding: 32px;
+    min-height: 400px;
+  }
+
+  .whyus__pillar-icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .whyus__pillar-title {
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  }
+
+  .whyus__pillar-body {
+    font-size: 17px;
+    max-width: none;
+  }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 700px) {
+  .whyus__header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .whyus__heading {
+    font-size: 40px;
+  }
+
+  .whyus__pillars {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .whyus__pillar {
+    padding: 28px;
+    min-height: 360px;
+  }
+
+  .whyus__pillar-icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .whyus__pillar-title {
+    font-size: 26px;
+  }
+
+  .whyus__pillar-body {
+    font-size: 17px;
+    max-width: none;
+  }
+}

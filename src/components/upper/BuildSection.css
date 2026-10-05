@@ -1,0 +1,107 @@
+/* ─── Capabilities / Build Section ─── */
+.build {
+  background: #ffffff;
+  padding: 130px 0 100px;
+}
+
+.build__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Header */
+.build__header {
+  max-width: 900px;
+  margin-bottom: 0;
+}
+
+.build__heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  color: #0F0F10;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.build__subtext {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  max-width: 760px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+/* ─── V-mask ─── */
+.build__v-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 55px;
+}
+
+.build__vmask {
+  width: 370px;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* Scroll indicator */
+.build__scroll {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.build__scroll-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px dashed #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.build__scroll-circle:hover {
+  border-color: #333;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.build__scroll-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #0F0F10;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .build__heading {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    letter-spacing: -0.5px;
+  }
+
+  .build__subtext {
+    white-space: normal;
+  }
+
+  .build__vmask {
+    width: 90vw;
+    max-width: 370px;
+  }
+}

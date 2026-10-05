@@ -1,0 +1,225 @@
+/* ===== Process section =====
+   Sized from the Figma frame (1440 wide, 80px side padding).
+   The JSX does not need to change. */
+
+.process {
+  --process-bg: #eff2f6;
+  --process-accent: #f45330;
+
+  /* stepper sizes (desktop) */
+  --num: 58px;        /* circle diameter */
+  --step-h: 136px;    /* distance from one circle to the next */
+  --title: 24px;      /* step title */
+
+  background: var(--process-bg);
+  padding: 70px 80px 80px;
+  position: relative;
+}
+
+/* heading */
+.process__head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 96px;
+}
+.process__head h2 {
+  font-family: inherit;
+  font-size: 44px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #1f1f1f;
+  margin: 0 0 14px;
+}
+.process__head h2 span {
+  color: var(--process-accent);
+}
+.process__head p {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #3b3b3b;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* two-column layout: 1280 content width (1440 - 2 x 80) */
+.process__body {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr;
+  align-items: center;
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* stepper */
+.process__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.process__step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  min-height: var(--step-h);
+  cursor: pointer;
+}
+.process__step:last-child {
+  min-height: 0;
+}
+
+/* dotted connector, runs from just under one circle to just above the next */
+.process__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--num) / 2 - 0.75px);
+  top: calc(var(--num) + 4px);
+  bottom: 4px;
+  border-left: 1.5px dotted #8d9399;
+}
+
+.process__num {
+  flex: 0 0 var(--num);
+  width: var(--num);
+  height: var(--num);
+  border-radius: 50%;
+  border: 1px dashed #8d9399;
+  background: var(--process-bg);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #666;
+  z-index: 1;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.process__content h3 {
+  /* centres the title line on the circle */
+  margin: calc(var(--num) / 2 - var(--title) * 0.6) 0 16px;
+  font-size: var(--title);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1f1f1f;
+  transition: color 0.3s;
+}
+.process__content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #3b3b3b;
+  /* wide enough for "Send us a drawing, sample or specification." on
+     one line, narrow enough that the others break before "approach." */
+  max-width: 340px;
+}
+
+/* active step */
+.process__step.is-active .process__num {
+  border-color: var(--process-accent);
+  color: var(--process-accent);
+}
+.process__step.is-active h3 {
+  color: var(--process-accent);
+}
+
+/* illustrations: stacked, cross-fade, blended into the section */
+.process__visual {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 0.85;
+  background: transparent;
+}
+.process__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+
+  /* 1) push the grey image background to white
+     2) multiply it into the section colour */
+  filter: contrast(1.35) brightness(1.06);
+  mix-blend-mode: multiply;
+
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.process__visual img.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* scroll down */
+.process__scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+  max-width: 1280px;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #1f1f1f;
+  text-decoration: none;
+}
+.process__scroll-icon {
+  width: 34px;
+  height: 34px;
+  border: 1px dashed #6b7075;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #1f1f1f;
+}
+.process__scroll-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* smaller laptops: scale the stepper down so it never overflows */
+@media (max-width: 1100px) {
+  .process {
+    --num: 48px;
+    --step-h: 116px;
+    --title: 21px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .process__step { gap: 20px; }
+  .process__num { font-size: 16px; }
+  .process__content h3 { margin-bottom: 12px; }
+  .process__content p { font-size: 15px; max-width: 300px; }
+  .process__body { grid-template-columns: 1fr 1fr; }
+}
+
+/* tablet / mobile */
+@media (max-width: 800px) {
+  .process {
+    --num: 44px;
+    --step-h: 104px;
+    --title: 20px;
+    padding: 56px 20px 40px;
+  }
+  .process__head {
+    margin-bottom: 40px;
+  }
+  .process__head h2 {
+    font-size: 32px;
+  }
+  .process__body {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .process__scroll {
+    margin-top: 20px;
+  }
+}
